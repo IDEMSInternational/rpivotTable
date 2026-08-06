@@ -1,5 +1,7 @@
 ### rpivotTable:  pivottable for R
 
+This package is derived from Enzo Martoglio's original [rpivotTable](https://github.com/smartinsightsfromdata/rpivotTable), released under the MIT license.
+
 The rpivotTable package is an R [htmlwidget](http://htmlwidgets.org)  visualization library built around the Javascript [pivottable](http://nicolas.kruchten.com/pivottable/examples/)  library.
 
 PivotTable.js is a Javascript Pivot Table library with drag'n'drop functionality built on top of jQuery/jQueryUI and  written in CoffeeScript  (then compiled to JavaScript) by Nicolas Kruchten at Datacratic. It is available under an MIT license
@@ -55,7 +57,7 @@ If you want to include it as part of your `dplyr` / `magrittr` pipeline, you can
 ```R
 library(dplyr)
 iris %>%
-  tbl_df() %>%
+  tibble::as_tibble() %>%
   filter( Sepal.Width > 3 ) %>%
   rpivotTable()
 ```

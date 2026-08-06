@@ -43,7 +43,7 @@
 #' @param ... list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
 #'            can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.
 #'            A further example of parameter is onRefresh. This parameters (shiny-only) introduces a JS function that allows to get back server side the list of parameters selected by the user.
-#'            An example is: onRefresh=htmlwidgets::JS("function(config) { Shiny.onInputChange('myPivotData', config); }")
+#'            An example is: \code{onRefresh=htmlwidgets::JS("function(config) \{ Shiny.onInputChange('myPivotData', config); \}")}
 #'            This setting makes available server-side a function input$myPivotData that gives back a list (of lists) with all the slice & dice parameters offered by pivottable.
 #'            See the example onRefresh-shiny.R for an example of how to use this feature.
 #'            Example of usage could be:

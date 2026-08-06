@@ -1,14 +1,15 @@
 Package: rpivotTable
 Title: Build Powerful Pivot Tables and Dynamically Slice & Dice your Data
-Date: 2018-01-29
-Version: 0.3.0
+Date: 2026-08-06
+Version: 0.4.0
 Authors@R: c(
-    person("Enzo", "Martoglio", role = c("aut", "cre"),  email = "enzo@smartinsightsfromdata.com"),
-    person("Nicolas", "Kruchten", role = c("ctb", "cph"),  email = "nicolas@kruchten.com"),
+    person("Enzo", "Martoglio", role = c("aut")),
+    person("Nicolas", "Kruchten", role = c("ctb", "cph")),
     person("Nagarajan", "Chinnasamy", role = c("ctb", "cph")),
-    person("Kenton", "Russell", role = c("ctb"), email = "kent.russell@timelyportfolio.com")
+    person("Kenton", "Russell", role = c("ctb")),
+    person("Lily", "Clements", role = c("cre"), email = "lily@idems.international")
     )
-Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
+Maintainer: Lily Clements  <lily@idems.international>
 Description: Build powerful pivot tables (aka Pivot Grid, Pivot Chart, Cross-Tab)
     and dynamically slice & dice / drag 'n' drop your data. 'rpivotTable' is a
     wrapper of 'pivottable', a powerful open-source Pivot Table library implemented
@@ -18,16 +19,17 @@ Depends:
 Imports:
     htmlwidgets (>= 0.5)
 Suggests:
-    testthat,
+    data.table,
+    devtools,
+    dplyr,
     htmltools,
     knitr,
     rmarkdown,
-    devtools,
-    dplyr,
-    data.table
+    testthat,
+    tibble
 Enhances: shiny (>= 0.12)
 License: MIT + file LICENSE
 Encoding: UTF-8
-URL: https://github.com/smartinsightsfromdata, http://smartinsightsfromdata.github.io
+URL: https://github.com/smartinsightsfromdata, https://github.com/idemsinternational
 VignetteBuilder: knitr
 RoxygenNote: 7.3.2

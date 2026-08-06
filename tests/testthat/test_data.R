@@ -20,7 +20,7 @@ test_that("data is not changed",{
     rpivotTable( data.frame(x=1:10,y=LETTERS[1:10]) )$x$data
     , data.frame(x=1:10,y=LETTERS[1:10]))
   expect_is(
-    rpivotTable(tbl_df(iris))$x$data
+    rpivotTable(tibble::as_tibble(iris))$x$data
     , "tbl_df"
   )
   expect_identical(

@@ -4,10 +4,23 @@
 \alias{rpivotTable}
 \title{pivottable.js in R}
 \usage{
-rpivotTable(data, rows = NULL, cols = NULL, aggregatorName = NULL,
-  vals = NULL, rendererName = NULL, sorter = NULL, exclusions = NULL,
-  inclusions = NULL, locale = "en", subtotals = FALSE, ..., width = 800,
-  height = 600, elementId = NULL)
+rpivotTable(
+  data,
+  rows = NULL,
+  cols = NULL,
+  aggregatorName = NULL,
+  vals = NULL,
+  rendererName = NULL,
+  sorter = NULL,
+  exclusions = NULL,
+  inclusions = NULL,
+  locale = "en",
+  subtotals = FALSE,
+  ...,
+  width = 800,
+  height = 600,
+  elementId = NULL
+)
 }
 \arguments{
 \item{data}{data.frame or data.table (R>=1.9.6 for safety) with data to use in the pivot table}
@@ -57,7 +70,7 @@ Please note that this only pre-selects the visible filter(s) on the pivot table:
 \item{...}{list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
 can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.
 A further example of parameter is onRefresh. This parameters (shiny-only) introduces a JS function that allows to get back server side the list of parameters selected by the user.
-An example is: onRefresh=htmlwidgets::JS("function(config) { Shiny.onInputChange('myPivotData', config); }")
+An example is: \code{onRefresh=htmlwidgets::JS("function(config) \{ Shiny.onInputChange('myPivotData', config); \}")}
 This setting makes available server-side a function input$myPivotData that gives back a list (of lists) with all the slice & dice parameters offered by pivottable.
 See the example onRefresh-shiny.R for an example of how to use this feature.
 Example of usage could be:

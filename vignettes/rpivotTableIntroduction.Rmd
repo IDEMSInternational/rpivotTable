@@ -104,7 +104,6 @@ Or if you want to include it as part of your `dplyr` / `magrittr` pipeline, you 
   library(dplyr)
   # )
 iris %>%
-tbl_df %>%
 filter( Sepal.Width > 3 & Sepal.Length > 5 ) %>%
 rpivotTable(rows="Sepal.Width",  rendererName="Treemap")
 ```

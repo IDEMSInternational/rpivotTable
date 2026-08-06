@@ -4,10 +4,23 @@
 \alias{rpivotTable}
 \title{pivottable.js in R}
 \usage{
-rpivotTable(data, rows = NULL, cols = NULL, aggregatorName = NULL,
-  vals = NULL, rendererName = NULL, sorter = NULL, exclusions = NULL,
-  inclusions = NULL, locale = "en", subtotals = FALSE, ..., width = 800,
-  height = 600, elementId = NULL)
+rpivotTable(
+  data,
+  rows = NULL,
+  cols = NULL,
+  aggregatorName = NULL,
+  vals = NULL,
+  rendererName = NULL,
+  sorter = NULL,
+  exclusions = NULL,
+  inclusions = NULL,
+  locale = "en",
+  subtotals = FALSE,
+  ...,
+  width = 800,
+  height = 600,
+  elementId = NULL
+)
 }
 \arguments{
 \item{data}{data.frame or data.table (R>=1.9.6 for safety) with data to use in the pivot table}

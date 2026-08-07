@@ -108,6 +108,7 @@ rpivotTable <- function(
     inclusions = NULL,
     locale = "en",
     subtotals = FALSE,
+    showUI = TRUE,
     ...,
     width = 800,
     height = 600,
@@ -150,7 +151,8 @@ rpivotTable <- function(
     # exlusions & inclusions need to be "excluded" from auto_boxing
     par <- list(
            exclusions = exclusions,
-           inclusions = inclusions
+           inclusions = inclusions,
+           showUI = showUI # So does showUI - from playing with pivottable's JS fiddle example, it didn't work if showUI = [false] but wanted showUI = false
          )
 
     params <- c(params, par)

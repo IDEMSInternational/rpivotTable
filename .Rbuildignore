@@ -8,3 +8,7 @@
 .Rbuildignore.Rproj
 .Rproj.user
 .Rbuildignore.user
+^README\.Rmd$
+^\.github$
+^doc$
+^Meta$

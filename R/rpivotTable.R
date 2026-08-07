@@ -42,6 +42,10 @@
 #'
 #' @param ... list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
 #'            can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.
+#'            If \code{sorters} is not supplied here, it is generated automatically from the
+#'            factor levels of any factor columns in \code{data}, so that rows/columns for
+#'            those variables sort in factor-level order rather than alphabetically.
+#'            Pass your own \code{sorters} to override this default.
 #'            A further example of parameter is onRefresh. This parameters (shiny-only) introduces a JS function that allows to get back server side the list of parameters selected by the user.
 #'            An example is: \code{onRefresh=htmlwidgets::JS("function(config) \{ Shiny.onInputChange('myPivotData', config); \}")}
 #'            This setting makes available server-side a function input$myPivotData that gives back a list (of lists) with all the slice & dice parameters offered by pivottable.
@@ -117,14 +121,21 @@ rpivotTable <- function(
   #convert table to data.frame
   if( length(intersect(c("table","structable", "ftable"), class(data))) > 0 ) data <- as.data.frame( data )
 
-    params <- list(
-      rows = rows,
-      cols = cols,
-      aggregatorName = aggregatorName,
-      vals = vals,
-      rendererName = rendererName,
-      sorter = sorter,
-      ...
+    dots <- list(...)
+    if ( is.null(dots$sorters) ) {
+      dots$sorters <- default_factor_sorters(data)
+    }
+
+    params <- c(
+      list(
+        rows = rows,
+        cols = cols,
+        aggregatorName = aggregatorName,
+        vals = vals,
+        rendererName = rendererName,
+        sorter = sorter
+      ),
+      dots
     )
 
  #   auto_box vectors of length 1
@@ -206,5 +217,24 @@ renderRpivotTable <- function(expr, env = parent.frame(), quoted = FALSE) {
     shinyRenderWidget(expr, rpivotTableOutput, env, quoted = TRUE)
 }
 
+# Build a pivottable.js `sorters` function that sorts each factor column in
+# `data` by its factor level order, so callers don't have to write this by hand.
+default_factor_sorters <- function(data) {
+  categorical_vars <- names(Filter(is.factor, data))
+  if (length(categorical_vars) == 0) return(NULL)
+
+  sorting_orders <- vapply(categorical_vars, function(var) {
+    levels_var <- paste(paste0('"', levels(data[[var]]), '"'), collapse = ",")
+    sprintf("if (attr === '%s') return sortAs([%s]);", var, levels_var)
+  }, character(1))
+
+  paste0(
+    "function(attr) {\n",
+    "  var sortAs = $.pivotUtilities.sortAs;\n",
+    "  ", paste(sorting_orders, collapse = "\n  "), "\n",
+    "  return null;\n",
+    "}"
+  )
+}
 
 NULL

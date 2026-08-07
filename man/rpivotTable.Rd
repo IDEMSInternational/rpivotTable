@@ -69,6 +69,10 @@ Please note that this only pre-selects the visible filter(s) on the pivot table:
 
 \item{...}{list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
 can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.
+If \code{sorters} is not supplied here, it is generated automatically from the
+factor levels of any factor columns in \code{data}, so that rows/columns for
+those variables sort in factor-level order rather than alphabetically.
+Pass your own \code{sorters} to override this default.
 A further example of parameter is onRefresh. This parameters (shiny-only) introduces a JS function that allows to get back server side the list of parameters selected by the user.
 An example is: \code{onRefresh=htmlwidgets::JS("function(config) \{ Shiny.onInputChange('myPivotData', config); \}")}
 This setting makes available server-side a function input$myPivotData that gives back a list (of lists) with all the slice & dice parameters offered by pivottable.

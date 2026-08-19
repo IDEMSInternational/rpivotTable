@@ -14,11 +14,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 #### News
-**Authored by Lily Clements:**
+**Information on Version 0.4 is authored by Lily Clements:**
 
 This package is derived from Enzo Martoglio's original [rpivotTable](https://github.com/smartinsightsfromdata/rpivotTable), released under the MIT license.
 
-Version 0.4.0
+Version 0.4
 
 * IDEMS International have taken over as maintainer
 * `rpivotTable()` now automatically generates `sorters` from the factor levels of any factor columns in `data`, so rows/columns sort in factor-level order rather than alphabetically by default; pass your own `sorters` argument to override
